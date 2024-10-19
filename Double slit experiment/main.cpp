@@ -213,32 +213,37 @@ vector<int> calculateHistogram(int num_bins) {
         double bin_width = static_cast<double>(screen_width) / 20; // Width of each bin
 
         double bright_spot_distance = averageDistanceBetweenPeaks(peaks, bin_width);
-        std::cout << "Average distance between bright spots: " << bright_spot_distance << std::endl;
+        
     }
 };
 
 int main() {
     const int screenWidth = 1000;
     const int screenHeight = 600;
+    const float displayTime = 0.05f;
     
     // Initialize the main window for the double slit experiment
     InitWindow(screenWidth, screenHeight, "Double Slit Experiment");
     
-    DoubleSlitExperiment experiment(100.0, 20.0, screenWidth, screenHeight, false); // Start with an unmeasured wavefunction
-    experiment.fireElectronBeam(50000);  // Fire a beam of electrons
+    // Loop through different slit distances
+    for (double screen_distance = 10.0; screen_distance <= 30.0; screen_distance += 2.0) {
+        DoubleSlitExperiment experiment(20.0, screen_distance, screenWidth, screenHeight, false); // Start with an unmeasured wavefunction
+        experiment.fireElectronBeam(50000);  // Fire a beam of electrons
 
-    // Analyze peaks after firing the electron beam
-    experiment.analyzePeaks();
+        // Analyze peaks after firing the electron beam
+        experiment.analyzePeaks();
 
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(BLACK);
-        experiment.showScreen();  // Display the electron detections
-        EndDrawing();
+        // Display the results for the specified duration
+        float startTime = GetTime();
+        while (GetTime() - startTime < displayTime) {
+            BeginDrawing();
+            ClearBackground(BLACK);
+            experiment.showScreen();  // Display the electron detections
+            EndDrawing();
+        }
+
+        experiment.clearScreen(); // Clear detections for the next iteration
     }
-
-    CloseWindow();
-
     // Create a separate window for the histogram
     //InitWindow(screenWidth, screenHeight, "Histogram");
 
