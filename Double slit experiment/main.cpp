@@ -100,7 +100,7 @@ public:
 
     void fireElectron() {
         double angle = wavefunction->measure();
-        double detected_x = distance_to_screen * sin(angle); // Corrected calculation
+        double detected_x = distance_to_screen * sin(angle); // Calculation for small angle 
         
         detections_x.push_back(detected_x);
         detections_y.push_back(GetRandomValue(-screen_height / 2, screen_height / 2)); // Random y positions
@@ -225,7 +225,7 @@ int main() {
     // Initialize the main window for the double slit experiment
     InitWindow(screenWidth, screenHeight, "Double Slit Experiment");
     
-    // Loop through different slit distances
+    // Loop through different distances
     for (double screen_distance = 10.0; screen_distance <= 30.0; screen_distance += 2.0) {
         DoubleSlitExperiment experiment(20.0, screen_distance, screenWidth, screenHeight, false); // Start with an unmeasured wavefunction
         experiment.fireElectronBeam(50000);  // Fire a beam of electrons
@@ -250,7 +250,7 @@ int main() {
     //while (!WindowShouldClose()) {
        // BeginDrawing();
        // ClearBackground(BLACK);
-       // experiment.drawHistogram(20); // Draw the histogram with 10 bins
+       // experiment.drawHistogram(20); // Draw the histogram
         //EndDrawing();
    // }
 
