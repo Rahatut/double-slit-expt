@@ -36,7 +36,7 @@ This project simulates the **Young’s double-slit experiment** in C++ using **R
 
 ## Demo
 
-A short video demonstrating the effect of increasing slit distance on the interference pattern is available [here](https://lnkd.in/gGP5Zq4C).
+A short video demonstrating the effect of increasing slit distance on the interference pattern is available [here](https://www.linkedin.com/posts/rahatut-tahrim_replicating-youngs-double-slit-experiment-activity-7253357501750878208-_eAb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEYnkQkBm-f0BsRx6jgpOBP-8e2drArgSn8).
 
 ---
 
